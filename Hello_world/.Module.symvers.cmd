@@ -1,0 +1,1 @@
+savedcmd_/home/max/Documents/Linux_drivers/Hello_world/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/max/Documents/Linux_drivers/Hello_world/Module.symvers -T /home/max/Documents/Linux_drivers/Hello_world/modules.order -i Module.symvers -e 

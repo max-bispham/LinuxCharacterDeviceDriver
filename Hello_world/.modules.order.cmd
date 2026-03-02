@@ -1,0 +1,1 @@
+savedcmd_/home/max/Documents/Linux_drivers/Hello_world/modules.order := {   echo /home/max/Documents/Linux_drivers/Hello_world/hello.o; :; } > /home/max/Documents/Linux_drivers/Hello_world/modules.order
