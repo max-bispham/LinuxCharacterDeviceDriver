@@ -1,0 +1,1 @@
+savedcmd_/home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/hello_cdev/hello_cdev.mod := printf '%s\n'   hello_cdev.o | awk '!x[$$0]++ { print("/home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/hello_cdev/"$$0) }' > /home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/hello_cdev/hello_cdev.mod
