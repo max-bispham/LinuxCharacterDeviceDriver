@@ -1,0 +1,1 @@
+savedcmd_/home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/tempi2c_cdev/temp.mod := printf '%s\n'   temp.o | awk '!x[$$0]++ { print("/home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/tempi2c_cdev/"$$0) }' > /home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/tempi2c_cdev/temp.mod

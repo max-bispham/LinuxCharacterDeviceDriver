@@ -18,13 +18,16 @@ __section(".gnu.linkonce.this_module") = {
 
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
+	{ 0x7c1dcb20, "i2c_register_driver" },
 	{ 0x122c3a7e, "_printk" },
-	{ 0x418c10ec, "__register_chrdev" },
 	{ 0x6bc3fbc0, "__unregister_chrdev" },
+	{ 0xd8ff692a, "i2c_del_driver" },
+	{ 0x418c10ec, "__register_chrdev" },
 	{ 0x474e54d2, "module_layout" },
 };
 
 MODULE_INFO(depends, "");
 
+MODULE_ALIAS("i2c:temp");
 
-MODULE_INFO(srcversion, "9BDB73EF61C7F895AD97A7C");
+MODULE_INFO(srcversion, "80BB9367930283F68D322D0");

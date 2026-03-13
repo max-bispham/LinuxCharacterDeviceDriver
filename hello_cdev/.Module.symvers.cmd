@@ -1,1 +1,0 @@
-savedcmd_/home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/hello_cdev/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/hello_cdev/Module.symvers -T /home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/hello_cdev/modules.order -i Module.symvers -e 
