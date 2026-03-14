@@ -1,0 +1,19 @@
+Compile command:
+
+	dtc -O dtb -I dts sht30.dts -o sht30.dtbo
+
+Add to device tree:
+	
+	raspberrypi:
+		
+		sudo dtoverlay sht30.dtbo
+	
+	other:
+		
+		mkdir /sys/kernel/config/device-tree/overlays/my_overlay
+		cat my_overlay.dtbo > /sys/kernel/config/device-tree/overlays/my_overlay/dtbo
+
+View device tree:
+
+	dtc -I fs -O dts /proc/device-tree -o /tmp/dt.dts
+
