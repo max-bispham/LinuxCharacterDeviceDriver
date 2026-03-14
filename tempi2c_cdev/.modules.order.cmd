@@ -1,0 +1,1 @@
+savedcmd_/home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/tempi2c_cdev/modules.order := {   echo /home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/tempi2c_cdev/temp.o; :; } > /home/max/Documents/Linux_drivers/LinuxCharacterDeviceDriver/tempi2c_cdev/modules.order
