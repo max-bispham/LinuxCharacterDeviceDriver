@@ -1,1 +1,0 @@
-savedcmd_/home/max/Documents/Linux_drivers/Hello_world/hello.mod := printf '%s\n'   hello.o | awk '!x[$$0]++ { print("/home/max/Documents/Linux_drivers/Hello_world/"$$0) }' > /home/max/Documents/Linux_drivers/Hello_world/hello.mod
