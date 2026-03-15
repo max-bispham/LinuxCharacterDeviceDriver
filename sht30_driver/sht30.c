@@ -57,6 +57,13 @@ static const struct i2c_device_id sht30_idtable[] = {
 	{}
 };
 
+
+static const struct of_device_id sht30_of_match[] = {
+	{ .compatible = "adafruit,sht30" },
+	{}
+};
+
+
 MODULE_DEVICE_TABLE(i2c, sht30_idtable);
 
 static int sht30_probe(struct i2c_client *client)
@@ -85,6 +92,7 @@ static void sht30_remove(struct i2c_client *client)
 static struct i2c_driver sht30_driver = {
         .driver = {
                 .name = "sht30",
+		.of_match_table = sht30_of_match,
         },
         .id_table       = sht30_idtable,
         .probe          = sht30_probe,
