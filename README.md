@@ -52,14 +52,14 @@ make
 
 Compile and load the overlay:
 ```bash
-dtc -@ -I dts -O dtb -o my_overlay.dtbo my_overlay.dts
-sudo dtoverlay my_overlay.dtbo
+dtc -@ -I dts -O dtb -o sht30.dtbo sht30.dts
+sudo dtoverlay sht30.dtbo
 ```
 
 To make it permanent:
 ```bash
-sudo cp my_overlay.dtbo /boot/overlays/
-echo "dtoverlay=my_overlay" | sudo tee -a /boot/config.txt
+sudo cp sht30.dtbo /boot/overlays/
+echo "dtoverlay=sht30" | sudo tee -a /boot/config.txt
 ```
 
 ## Loading the Driver
