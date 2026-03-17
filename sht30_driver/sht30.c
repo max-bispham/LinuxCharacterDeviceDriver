@@ -4,7 +4,7 @@
 #include <linux/i2c.h>
 #include <linux/slab.h>
 #include <linux/device.h>
-
+#include <linux/delay.h>
 
 
 // initializes major to negative
@@ -23,12 +23,58 @@ static struct class *sht30_class;
 // Device device struct
 static struct device *sht30_device;
 
+// Struct to return reading
+struct sht30_reading {
+	u16 temperature;
+	u16 humidity;
+};
+
+
 // Character Driver
 
 static ssize_t sht30_read(struct file *f, char __user *u, size_t s, loff_t *l)
 {
+	struct sht30_data *data = f->private_data;
+	struct i2c_client *client = data->client;
+	struct sht30_reading reading;
+	u8 cmd[2] = {0x2c, 0x06};
+	u8 raw[6];
+	int ret;
+	
 	printk("sht30_cdev - Read is called\n");
-	return 0;
+
+	// Send measurement command
+	ret = i2c_master_send(client, cmd, 2);
+	if (ret < 0)
+	{
+		printk("sht30 - failed to send measurement command\n");
+		return ret;
+	}
+
+	// Delay 15 miliseconds for sht30 to respond
+	msleep(15);
+
+	// Read bytes back
+	ret = i2c_master_recv(client, raw, 6);
+	if (ret < 0)
+	{
+		printk("sht30 - failed to read measurement command\n");
+		return ret;
+	}
+
+	// Data conversion
+	u16  raw_temp = (raw[0] << 8 ) | raw[1];
+	u16 raw_hum = (raw[3] << 8) | raw[4];
+
+	reading.temperature = raw_temp;
+	reading.humidity = raw_hum;
+
+	if (copy_to_user(u, &reading, sizeof(reading)))
+	{
+		return -EFAULT;
+	}
+
+	return sizeof(reading);
 }
 
 
@@ -66,21 +112,14 @@ static struct file_operations fops = {
 
 // I2C driver
 
-static const struct i2c_device_id sht30_idtable[] = {
-	{"adafruit,sht30", 0},
-	{}
-};
-
 
 static const struct of_device_id sht30_of_match[] = {
 	{ .compatible = "adafruit,sht30" },
 	{}
 };
 
+MODULE_DEVICE_TABLE(of, sht30_of_match);
 
-
-
-MODULE_DEVICE_TABLE(i2c, sht30_idtable);
 
 static int sht30_probe(struct i2c_client *client)
 {
@@ -165,7 +204,6 @@ static struct i2c_driver sht30_driver = {
                 .name = "sht30",
 		.of_match_table = sht30_of_match,
         },
-        .id_table       = sht30_idtable,
         .probe          = sht30_probe,
         .remove         = sht30_remove,
 };
